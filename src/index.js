@@ -17,7 +17,8 @@ state = {
             (err) => this.setState({errorMassage: err.message})
         )}
 
-    render () {
+    renderContent () {
+        
         if (this.state.errorMassage && !this.state.lat) {
                 return <div> Error: {this.state.errorMassage} </div>
         }
@@ -26,8 +27,16 @@ state = {
             return <SeasonDisplay lat={this.state.lat} />
         }
 
-        return <Spinner message="Please accept location request..." />
+        return <Spinner message="Please accept location request..." />  
         
+    }
+
+    render () {
+       return (
+        <div>
+            {this.renderContent()}
+        </div>
+       )
     }
 };
 
